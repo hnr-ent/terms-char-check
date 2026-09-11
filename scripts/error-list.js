@@ -59,7 +59,7 @@ window.ERROR_LISTS = {
     "<strong> </strong>",
     " ",
     "​​ ",
-    " ",
+    " ",
     ": <",
     "s(s)",
     "s[s]",
