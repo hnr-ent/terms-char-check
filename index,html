@@ -1,0 +1,99 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8" />
+<meta name="hosting-provider" content="Netlify">
+<meta name="netlify-deploy" content="https://netlify.new/?utm_campaign=ai-legible&amp;utm_source=meta&amp;utm_medium=referral&amp;utm_id=8ce4ac4d-5a4c-4e2b-b3d5-943272b63087">
+   <title>HTML Character Checker</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+   <header>
+      <h1>Terms Character Checker</h1>
+      <span class="sub">Paste HTML → highlight words/phrases/special characters from a separate list</span>
+   </header>
+   <main>
+      <!-- Left: Input -->
+      <section class="panel">
+         <div class="panel__header">
+            <h2>Paste HTML</h2>
+            <div class="toolbar">
+               <label class="switch">
+                  <input type="checkbox" id="caseSensitive" />
+                  Case-sensitive
+               </label>
+               <label class="switch">
+                  <input type="checkbox" id="wholeWord" checked />
+                  Whole word
+                  <span class="info-icon"
+                     title="Checked: Matches only complete words (e.g., 'click' but not 'onclick'). Unchecked: Matches anywhere as a substring.">ℹ️</span>
+               </label>
+               <button id="clearBtn">Clear</button>
+               <button id="sampleBtn" style="display: none;">Load sample</button>
+            </div>
+         </div>
+         <textarea id="htmlInput" placeholder="Paste your HTML here..."></textarea>
+         <div class="legend">
+            <span>Highlights: <mark class="hl">match</mark></span>
+            <span class="muted">Formatting preserved (no rendering of tags)</span>
+         </div>
+      </section>
+      <!-- Right: Output -->
+      <section class="panel">
+         <h2>Highlighted Output</h2>
+         <div id="output" class="output" aria-label="Highlighted code"></div>
+         <div class="footerbar">
+            <div class="muted" id="stats">0 matches</div>
+            <div class="toolbar">
+               <button id="copyHtmlBtn">Copy original HTML</button>
+               <button id="copyHighlightedBtn">Copy highlighted as text</button>
+            </div>
+         </div>
+      </section>
+   </main>
+   <!-- Error lists + management -->
+   <section class="panel" style="margin: 0 1rem 1rem;">
+      <!-- <h2>Current Error Lists (from <code>error-list.js</code>)</h2> -->
+      <h2>Current Error Lists</h2>
+      <div class="lists">
+         <div class="list" data-list="words">
+            <h3>Words</h3>
+            <div class="list-items" id="wordsList"></div>
+            <div class="add-row">
+               <input id="addWordInput" placeholder="Add word…" />
+               <button id="addWordBtn">Add</button>
+            </div>
+         </div>
+         <div class="list" data-list="phrases">
+            <h3>Phrases</h3>
+            <div class="list-items" id="phrasesList"></div>
+            <div class="add-row">
+               <input id="addPhraseInput" placeholder="Add phrase…" />
+               <button id="addPhraseBtn">Add</button>
+            </div>
+         </div>
+         <div class="list" data-list="specials">
+            <h3>Special Characters</h3>
+            <div class="list-items" id="specialsList"></div>
+            <div class="add-row">
+               <input id="addSpecialInput" placeholder="Add special character…" />
+               <button id="addSpecialBtn">Add</button>
+            </div>
+         </div>
+      </div>
+      <div class="toolbar" style="margin-top:0.75rem;">
+         <button id="exportBtn" style="display: none;">Export lists (JSON)</button>
+         <label class="btn" for="importFile" style="display: none;">Import lists (JSON)</label>
+         <input id="importFile" type="file" accept="application/json" style="display:none" />
+      </div>
+      <!-- <p class="muted">Tip: You can also edit <code>error-list.js</code> directly for version-controlled updates.</p>
+         </section> -->
+      <script src="/scripts/error-list.js"></script>
+      <script src="/scripts/main.js"></script>
+</body>
+
+</html>
