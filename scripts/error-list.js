@@ -45,6 +45,7 @@ window.ERROR_LISTS = {
     'daysafter',
     'Casino."',
     'Casino.”',
+    'BonusWagering',
   ],
   specials: [
     // Special characters or sequences (they'll be matched as literal strings)
